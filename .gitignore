@@ -12,11 +12,9 @@ pnpm-debug.log*
 *.env
 *.env.*
 
-# README files
-README.md
-readme.md
-*README*.md
-*readme*.md
+# Markdown files
+*.md
+**/*.md
 
 # Expo & Mobile
 .expo/
@@ -44,3 +42,4 @@ Thumbs.db
 
 # Temporary & Logs
 *.log
+
