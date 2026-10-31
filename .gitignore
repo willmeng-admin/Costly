@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+*.env
+*.env.*
+
+# README files
+README.md
+readme.md
+*README*.md
+*readme*.md
+
+# Expo & Mobile
+.expo/
+dist/
+web-build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Turbo & Build
+.turbo/
+build/
+coverage/
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary & Logs
+*.log

@@ -1,0 +1,49 @@
+{
+  "name": "@costly/mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.29.10",
+    "@expo/metro-runtime": "~58.0.15",
+    "@expo/vector-icons": "^15.1.1",
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-query": "^5.66.0",
+    "clsx": "^2.1.1",
+    "expo": "~58.0.21",
+    "expo-constants": "~58.0.14",
+    "expo-font": "~58.0.11",
+    "expo-linking": "~58.0.15",
+    "expo-router": "~58.0.28",
+    "expo-status-bar": "~58.0.4",
+    "lucide-react-native": "^0.475.0",
+    "nativewind": "^4.1.23",
+    "query-string": "^10.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.54.2",
+    "react-native": "0.88.1",
+    "react-native-css-interop": "^0.2.7",
+    "react-native-reanimated": "~4.7.1",
+    "react-native-safe-area-context": "5.10.1",
+    "react-native-screens": "~4.30.1",
+    "react-native-svg": "15.16.0",
+    "react-native-web": "~0.21.4",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^3.4.17",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~19.3.0",
+    "babel-preset-expo": "~58.0.22",
+    "typescript": "^6.0.3"
+  },
+  "private": true
+}
