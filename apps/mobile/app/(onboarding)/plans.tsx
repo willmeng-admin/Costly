@@ -1,11 +1,3 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import { PlansScreen } from '../../src/pages/onboarding';
 
-export default function PlaceholderScreen() {
-  return (
-    <View style={{ flex: 1, backgroundColor: '#090A0F', justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ color: '#FFFFFF' }}>Coming Soon</Text>
-    </View>
-  );
-}
-
+export default PlansScreen;

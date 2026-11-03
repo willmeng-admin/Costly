@@ -86,7 +86,10 @@ export function AuthFormDeck({
         style={[styles.layer, signUpStyle]}
         pointerEvents={currentMode === 'sign-up' ? 'auto' : 'none'}
       >
-        <SignUpForm onSignInPress={() => switchMode('sign-in')} />
+        <SignUpForm
+          isCurtain={isCurtain}
+          onSignInPress={() => switchMode('sign-in')}
+        />
       </Animated.View>
     </View>
   );

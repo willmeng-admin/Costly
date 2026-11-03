@@ -22,7 +22,7 @@ import Animated, {
 import type { SharedValue } from 'react-native-reanimated';
 import { SPLASH_CONFIG } from '../../design-system/splash/splashConfig';
 import skylineImage from '../../../assets/skyline_doodle.png';
-import { AuthFormDeck } from '../auth';
+import { AuthFormDeck, AuthConstructionBackground } from '../auth';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -296,11 +296,13 @@ export function SplashScreen() {
     const climbY = interpolate(monogramClimbProgress.value, [0, 1], [SCREEN_HEIGHT * 0.22, 0]);
     const handoverY = interpolate(handoverProgress.value, [0, 1], [0, -SCREEN_HEIGHT * 0.33]);
     const climbScale = interpolate(monogramClimbProgress.value, [0, 1], [0.45, 1.0]);
-    const handoverScale = interpolate(handoverProgress.value, [0, 1], [1.0, 0.88]);
+    const handoverScale = interpolate(handoverProgress.value, [0, 1], [1.0, 0.78]);
+    const handoverX = interpolate(handoverProgress.value, [0, 1], [0, 117.6 - SCREEN_WIDTH * 0.5]);
 
     return {
       transform: [
         { translateY: climbY + handoverY },
+        { translateX: handoverX },
         { scale: climbScale * handoverScale },
       ],
     };
@@ -326,11 +328,12 @@ export function SplashScreen() {
     const riseY = interpolate(taglineProgress.value, [0, 1], [20, 0]);
     const scale = interpolate(taglineProgress.value, [0, 1], [0.85, 1.0]);
     const introOpacity = interpolate(taglineProgress.value, [0, 1], [0, 1]);
+    const handoverX = interpolate(handoverProgress.value, [0, 1], [0, 111 - SCREEN_WIDTH * 0.5]);
     const handoverY = interpolate(handoverProgress.value, [0, 1], [0, -SCREEN_HEIGHT * 0.33]);
 
     return {
       opacity: introOpacity,
-      transform: [{ translateY: riseY + handoverY }, { scale }],
+      transform: [{ translateY: riseY + handoverY }, { translateX: handoverX }, { scale }],
     };
   });
 
@@ -349,6 +352,17 @@ export function SplashScreen() {
     const widthPercent = interpolate(loaderFillProgress.value, [0, 1], [0, 100]);
     return {
       width: `${widthPercent}%`,
+    };
+  });
+
+  // Decorative blueprint building & crane SVG fades in smoothly on handover
+  const handoverSkylineAnimStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(handoverProgress.value, [0, 0.25, 1], [0, 0.3, 1]);
+    const translateY = interpolate(handoverProgress.value, [0, 1], [15, 0]);
+
+    return {
+      opacity,
+      transform: [{ translateY }],
     };
   });
 
@@ -411,6 +425,11 @@ export function SplashScreen() {
           style={styles.skylineImage}
           resizeMode="contain"
         />
+      </Animated.View>
+
+      {/* ── Brand Horizon Construction Blueprint (Option 1: Minimalist Blueprint) ─ */}
+      <Animated.View style={[styles.handoverSkylineWrapper, handoverSkylineAnimStyle]} pointerEvents="none">
+        <AuthConstructionBackground />
       </Animated.View>
 
       {/* ── Sign-In Curtain Card (Slides up from bottom, zero duplicate code) ─ */}
@@ -533,6 +552,14 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH * 1.08,
     height: SCREEN_HEIGHT * 0.40,
     tintColor: SPLASH_CONFIG.colors.skyline,
+  },
+  handoverSkylineWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 12,
   },
   curtainCard: {
     position: 'absolute',
